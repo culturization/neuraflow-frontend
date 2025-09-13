@@ -9,15 +9,18 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@loadable/component": "^5.16.7",
     "mobx": "^6.13.7",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-router-dom": "^7.9.0"
+    "react-router-dom": "^7.9.0",
+    "swr": "^2.3.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/loadable__component": "^5.13.10",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

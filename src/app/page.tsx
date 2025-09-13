@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import loadable from "@loadable/component";
 import AppRouter from "./router";
+
+const AsyncPage = loadable((props: { page: string, setPrevComp: SetStr }) => import(`./${props.page}`), {
+  cacheKey: (props) => props.page
+});
 
 export default function App() {
   const [render, setRender] = useState(false);
   useEffect(() => setRender(true), []);
 
   return render ? (
-    <div>
-      <ul className="flex list-none m-0 p-0 w-full bg-stone-300">
-        <li className="flex bg-stone-400 px-8 py-5"><Link to="/login">Логин</Link></li>
-        <li className="flex bg-stone-400 px-8 py-5"><Link to="/register">Регистрация</Link></li>
-        <li className="flex ml-auto bg-stone-400 px-8 py-5"><Link to="/profile">Личный кабинет</Link></li>
-      </ul>
+    <BrowserRouter>
       <AppRouter />
-    </div>
+    </BrowserRouter>
   ) : null;
 }
