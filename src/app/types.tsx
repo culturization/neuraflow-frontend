@@ -1,1 +1,0 @@
-type SetStr = React.Dispatch<React.SetStateAction<string>>;

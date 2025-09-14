@@ -1,21 +1,11 @@
-"use client";
+"use server";
 
-import React, { useEffect, useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import loadable from "@loadable/component";
-import AppRouter from "./router";
+import { cookies } from "next/headers";
+import Provider from "./provider";
 
-const AsyncPage = loadable((props: { page: string, setPrevComp: SetStr }) => import(`./${props.page}`), {
-  cacheKey: (props) => props.page
-});
+export default async function App() {
+  // TODO: encrypted cookies
+  const reqCookies = (await cookies()).getAll();
 
-export default function App() {
-  const [render, setRender] = useState(false);
-  useEffect(() => setRender(true), []);
-
-  return render ? (
-    <BrowserRouter>
-      <AppRouter />
-    </BrowserRouter>
-  ) : null;
+  return <Provider reqCookies={reqCookies}/>
 }
